@@ -1,23 +1,23 @@
-  /*========== SHOW MENU ==========*/
+/*========== SHOW MENU ==========*/
 const navMenu = document.getElementById('nav-menu'),
   navToggle = document.getElementById('nav-toggle'),
   navClose = document.getElementById('nav-close')
 
-  /*---------- Show Menu ----------*/
+/*---------- Show Menu ----------*/
 if (navToggle) {
   navToggle.addEventListener('click', () => {
     navMenu.classList.toggle('show-menu')
   })
 }
 
-  /*---------- Menu Hidden ----------*/
+/*---------- Menu Hidden ----------*/
 if (navClose) {
   navClose.addEventListener('click', () => {
-      navMenu.classList.toggle('show-menu')
-    })
+    navMenu.classList.toggle('show-menu')
+  })
 }
 
-  /*========== REMOVE MENU MOBILE ==========*/
+/*========== REMOVE MENU MOBILE ==========*/
 const navLink = document.querySelectorAll('.nav__link')
 
 const linkAction = () => {
@@ -27,16 +27,24 @@ const linkAction = () => {
 
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
-  /*========== Change Background Header ==========*/
+/*========== Change Background Header & Logo ==========*/
+const header = document.getElementById('header')
+const logoImg = document.querySelector('.nav__logo-img')
+
 const bgHeader = () => {
-  const header = document.getElementById('header')
-  this.scrollY >= 50 ? header.classList.add('bg-header') : header.classList.remove('bg-header')
+  if (window.scrollY >= 50) {
+    header.classList.add('bg-header')
+    logoImg.src = 'assets/img/logo-dark.svg'  // fundo branco → logo escura
+  } else {
+    header.classList.remove('bg-header')
+    logoImg.src = 'assets/img/logo-white.svg' // fundo escuro → logo branca
+  }
 }
 
 window.addEventListener('scroll', bgHeader)
 bgHeader()
 
-  /*========== Swiper Serivces ==========*/
+/*========== Swiper Services ==========*/
 const swiperServices = new Swiper('.services__swiper', {
   loop: true,
   grabCursor: true,
@@ -49,16 +57,18 @@ const swiperServices = new Swiper('.services__swiper', {
   }
 })
 
-  /*========== Scroll Up ==========*/
+/*========== Scroll Up ==========*/
 const scrollUp = () => {
   const scrollUp = document.getElementById('scroll-up')
-  this.scrollY >= 350 ? scrollUp.classList.add('show-scroll') : scrollUp.classList.remove('show-scroll')
+  window.scrollY >= 350
+    ? scrollUp.classList.add('show-scroll')
+    : scrollUp.classList.remove('show-scroll')
 }
 
 window.addEventListener('scroll', scrollUp)
 scrollUp()
 
-    /*========== Scroll Active Link ==========*/
+/*========== Scroll Active Link ==========*/
 const sections = document.querySelectorAll('section[id]')
 
 const scrollActive = () => {
@@ -80,7 +90,7 @@ const scrollActive = () => {
 
 window.addEventListener('scroll', scrollActive)
 
-    /*========== Scroll Reveal Animation ==========*/
+/*========== Scroll Reveal Animation ==========*/
 const sr = ScrollReveal({
   origin: 'top',
   distance: '100px',
@@ -91,7 +101,6 @@ const sr = ScrollReveal({
 
 sr.reveal(`.home__content, .services__data, .services__swiper, .footer__container`)
 sr.reveal(`.home__images`, { origin: 'bottom', delay: 1000 })
-sr.reveal(`.about__images, .contact__img`, {origin: 'left'})
+sr.reveal(`.about__images, .contact__img`, { origin: 'left' })
 sr.reveal(`.about__data, .contact__data`, { origin: 'right' })
-sr.reveal(`.projects__card`, {interval: 100})
-
+sr.reveal(`.projects__card`, { interval: 100 })

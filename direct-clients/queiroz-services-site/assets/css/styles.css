@@ -639,7 +639,7 @@ img {
   background: var(--color-gradient);
   color: var(--white);
   font-weight: var(--font-weight-semibold);
-  padding: 1rem 2rem;
+  padding: .75rem 2rem;
   border-radius: 0.5rem;
   transition: box-shadow .4s;
 }
@@ -809,6 +809,22 @@ img {
     justify-content: space-between;
   }
 }
+
+/* === LOGO === */
+.nav__logo-img {
+  height: 40px;          /* altura ideal para header */
+  width: auto;           /* mantém proporção */
+  object-fit: contain;   /* evita distorção */
+  display: block;
+  transition: filter 0.4s, opacity 0.4s;
+}
+
+.nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* espaço se quiser adicionar texto no futuro */
+}
+
   /*---------- Breakpoints - Large Devices ----------*/
 @media screen and (min-width: 1150px) {
   .container {
